@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Opus Swap</h1>
+<p>User's Book Postings:</p>
+
+<% @posts.each do |post| %>
+<h2><%= link_to post.title, post %></h2>
+<p><%= image_tag post.image.url(:thumb) %></p>
+<p>DATE: <i><%= friendly_date post.created_at %></i></p>
+<p>Author: <%= post.author %></p>
+<p>ISBN: <%= post.ISBN %></p>
+<p>Subject: <%= post.subject %></p>
+<p>Price $: <%= post.price %></p>
+<p>Desciption: <%= post.body %></p>
+<p>Seller : <%= post.user.email %></p>
+
+<% if post.user == current_user %>
+<p><%= button_to 'Destroy', post, method: :delete, data: {confirm: 'Are you sure?'} %></p>
+<% end %>
+
+
+<% end %>
+
+<br>
+
+<%= link_to 'New Post', new_post_path %>
