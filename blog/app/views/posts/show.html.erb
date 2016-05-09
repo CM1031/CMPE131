@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+
+<%= image_tag @post.image.url(:large) %>
+
+<h2>Title: <%= @post.title %></h2>
+<p>Author: <%= @post.author %></p>
+<p>ISBN: <%= @post.ISBN %></p>
+<p>Subject: <%= @post.subject %></p>
+<p>Price $: <%= @post.price %></p>
+<p>Description: <%= @post.body %></p>
+
+<% if post.user == current_user %>
+<%= link_to 'Edit', edit_post_path(@post) %> |
+<% end %>
+
+<%= link_to 'Back', posts_path %>
+ 
